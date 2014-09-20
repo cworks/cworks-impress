@@ -1,0 +1,372 @@
+<!doctype html>
+
+<!--
+
+    Welcome to the light side of the source, young padawan.
+
+    One step closer to learn something interesting you are...
+
+                               ____                  
+                            _.' :  `._               
+                        .-.'`.  ;   .'`.-.           
+               __      / : ___\ ;  /___ ; \      __  
+             ,'_ ""=-.:__;".-.";: :".-.":__;.-="" _`,
+             :' `.t""=-.. '<@.`;_  ',@:` ..-=""j.' `;
+                  `:-.._J '-.-'L__ `-.-' L_..-;'     
+                    "-.__ ;  .-"  "-.  : __.-"       
+                        L ' /.======.\ ' J           
+                         "-.   "__"   .-"            
+                        __.l"-:_JL_;-";.__           
+                     .-j/'.;  ;""""  / .'\"-.        
+                   .' /:`. "-.:     .-" .';  `.      
+                .-"  / ;  "-. "-..-" .-"  :    "-.   
+             .+"-.  : :      "-.__.-"      ;-._   \  
+             ; \  `.; ;                    : : "+. ; 
+             :  ;   ; ;                    : ;  : \: 
+             ;  :   ; :                    ;:   ;  : 
+            : \  ;  :  ;                  : ;  /  :: 
+            ;  ; :   ; :                  ;   :   ;: 
+            :  :  ;  :  ;                : :  ;  : ; 
+            ;\    :   ; :                ; ;     ; ; 
+            : `."-;   :  ;              :  ;    /  ; 
+             ;    -:   ; :              ;  : .-"   : 
+             :\     \  :  ;            : \.-"      : 
+              ;`.    \  ; :            ;.'_..-=  / ; 
+              :  "-.  "-:  ;          :/."      .'  :
+               \         \ :          ;/  __        :
+                \       .-`.\        /t-""  ":-+.   :
+                 `.  .-"    `l    __/ /`. :  ; ; \  ;
+                   \   .-" .-"-.-"  .' .'j \  /   ;/ 
+                    \ / .-"   /.     .'.' ;_:'    ;  
+                     :-""-.`./-.'     /    `.___.'   
+                           \ `t  ._  /               
+                            "-.t-._:'                
+
+-->
+
+<!--
+    
+    So you'd like to know how to use impress.js?
+    
+    You've made the first, very important step - you're reading the source code.
+    And that's how impress.js presentations are built - with HTML and CSS code.
+    
+    Believe me, you need quite decent HTML and CSS skills to be able to use impress.js effectively.
+    And what is even more important, you need to be a designer, too, because there are no default
+    styles for impress.js presentations, there is no default or automatic layout for them.
+    
+    You need to design and build it by hand.
+    
+    So...
+    
+    Would you still like to know how to use impress.js?
+    
+-->
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>impress.js | presentation tool based on the power of CSS3 transforms and transitions in modern browsers | by Bartek Szopka @bartaz</title>
+    
+    <meta name="description" content="impress.js is a presentation tool based on the power of CSS3 transforms and transitions in modern browsers and inspired by the idea behind prezi.com." />
+    <meta name="author" content="Bartek Szopka" />
+
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+    <!--
+        
+        Impress.js doesn't depend on any external stylesheet. Script adds all styles it needs for
+        presentation to work.
+        
+        This style below contains styles only for demo presentation. Browse it to see how impress.js
+        classes are used to style presentation steps, or how to apply fallback styles, but I don't want
+        you to use them directly in your presentation.
+        
+        Be creative, build your own. We don't really want all impress.js presentations to look the same,
+        do we?
+        
+        When creating your own presentation get rid of this file. Start from scratch, it's fun!
+        
+    -->
+    <link href="css/impress-demo.css" rel="stylesheet" />
+    
+    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+</head>
+
+<!--
+    
+    Body element is used by impress.js to set some useful class names, that will allow you to detect
+    the support and state of the presentation in CSS or other scripts.
+    
+    First very useful class name is `impress-not-supported`. This class means, that browser doesn't
+    support features required by impress.js, so you should apply some fallback styles in your CSS.
+    It's not necessary to add it manually on this element. If the script detects that browser is not
+    good enough it will add this class, but keeping it in HTML means that users without JavaScript
+    will also get fallback styles.
+    
+    When impress.js script detects that browser supports all required features, this class name will
+    be removed.
+    
+    The class name on body element also depends on currently active presentation step. More details about
+    it can be found later, when `hint` element is being described.
+    
+-->
+<body class="impress-not-supported">
+
+<!--
+    For example this fallback message is only visible when there is `impress-not-supported` class on body.
+-->
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<!--
+    
+    Now that's the core element used by impress.js.
+    
+    That's the wrapper for your presentation steps. In this element all the impress.js magic happens.
+    It doesn't have to be a `<div>`. Only `id` is important here as that's how the script find it.
+    
+    You probably won't need it now, but there are some configuration options that can be set on this element.
+    
+    To change the duration of the transition between slides use `data-transition-duration="2000"` giving it
+    a number of ms. It defaults to 1000 (1s).
+    
+    You can also control the perspective with `data-perspective="500"` giving it a number of pixels.
+    It defaults to 1000. You can set it to 0 if you don't want any 3D effects.
+    If you are willing to change this value make sure you understand how CSS perspective works:
+    https://developer.mozilla.org/en/CSS/perspective
+    
+    But as I said, you won't need it for now, so don't worry - there are some simple but interesting things
+    right around the corner of this tag ;)
+    
+-->
+<div id="impress">
+
+    <!--
+        
+        This is an example of step element being scaled.
+        
+        Again, we use a `data-` attribute, this time it's `data-scale="4"`, so it means that this
+        element will be 4 times larger than the others.
+        From presentation and transitions point of view it means, that it will have to be scaled
+        down (4 times) to make it back to its correct size.
+        
+    -->
+
+
+    <div id="title" class="step" data-x="0" data-y="0" data-z="0" data-rotate-x="0" data-rotate-y="0" data-rotate-z="0" data-scale="1">
+        <span>dream & do</span>
+        <div id="logo-container">
+            <img src="data:image/png;base64,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TUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS40LjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgICAgICAgICAgeG1sbnM6ZXhpZj0iaHR0cDovL25zLmFkb2JlLmNvbS9leGlmLzEuMC8iCiAgICAgICAgICAgIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIKICAgICAgICAgICAgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIj4KICAgICAgICAgPHRpZmY6UmVzb2x1dGlvblVuaXQ+MTwvdGlmZjpSZXNvbHV0aW9uVW5pdD4KICAgICAgICAgPHRpZmY6Q29tcHJlc3Npb24+NTwvdGlmZjpDb21wcmVzc2lvbj4KICAgICAgICAgPHRpZmY6WFJlc29sdXRpb24+NzI8L3RpZmY6WFJlc29sdXRpb24+CiAgICAgICAgIDx0aWZmOk9yaWVudGF0aW9uPjE8L3RpZmY6T3JpZW50YXRpb24+CiAgICAgICAgIDx0aWZmOllSZXNvbHV0aW9uPjcyPC90aWZmOllSZXNvbHV0aW9uPgogICAgICAgICA8ZXhpZjpQaXhlbFhEaW1lbnNpb24+MjE5PC9leGlmOlBpeGVsWERpbWVuc2lvbj4KICAgICAgICAgPGV4aWY6Q29sb3JTcGFjZT4xPC9leGlmOkNvbG9yU3BhY2U+CiAgICAgICAgIDxleGlmOlBpeGVsWURpbWVuc2lvbj4yNDg8L2V4aWY6UGl4ZWxZRGltZW5zaW9uPgogICAgICAgICA8ZGM6c3ViamVjdD4KICAgICAgICAgICAgPHJkZjpCYWcvPgogICAgICAgICA8L2RjOnN1YmplY3Q+CiAgICAgICAgIDx4bXA6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" />        
+            <h1 class="title">works</h1>
+        </div>
+        <span style="float: right;">software</span>
+    </div>  
+
+    <div id="design" class="step slide"
+        data-x="0" data-y="1000" data-z="0"
+        data-rotate-x="0" data-rotate-y="0" data-rotate-z="0">
+        <strong>Design</strong>
+        <p>
+            <ul>
+                <li>
+                    Project Discovery: Use Cases & Requirements        
+                </li>
+                <li>
+                    Software Architecture & System Design        
+                </li>
+                <li>
+                    Data Modeling: SQL & NoSQL        
+                </li>            
+                <li>
+                    User Interface mockups and storyboarding        
+                </li>       
+            </ul>
+        </p>
+    </div>
+
+    <div id="development" class="step slide"
+        data-x="0" data-y="2000" data-z="0"
+        data-rotate-x="0" data-rotate-y="0" data-rotate-z="0">
+        <strong>Development</strong>
+        <p>
+            <ul>
+                <li>
+                    Project & Process Management: Agile Methods       
+                </li>
+                <li>
+                    Custom Development and Integrations        
+                </li>
+                <li>
+                    Experts in Data Analysis and BI Applications        
+                </li>                
+                <li>
+                    Performance and Acceptance Testing       
+                </li>                
+                <li>
+                    Cornucopia of Languages, Frameworks, Databases and Platforms!
+                </li>            
+                <li>
+                    Java, HTML5, Javascript, CSS3, Weblogic, JBoss, MySQL, Oracle, MongoDB, Couchbase Server, Hadoop EcoSystem        
+                </li>       
+            </ul>
+        </p>
+    </div> 
+
+    <div id="deployment" class="step slide"
+        data-x="0" data-y="3000" data-z="0"
+        data-rotate-x="0" data-rotate-y="0" data-rotate-z="0">
+        <strong>Consulting</strong>
+        <p>
+        <ul>
+        <li>
+            We enjoy problem solving and helping our clients reach their goals so if you have a project in your brain, on the horizon or one underway <strong>cworks.inc.</strong> is ready to help.
+        <li>  
+        <li>
+        <strong>We</strong>          
+        </li> 
+        <li>
+        <strong>Appreciate</strong>                
+        </li> 
+        <li>
+        <strong>You</strong>                
+        </li>                    
+        </ul>
+        </p>
+       
+
+    </div>   
+           
+
+</div>
+
+<!--
+    
+    Hint is not related to impress.js in any way.
+    
+    But it can show you how to use impress.js features in creative way.
+    
+    When the presentation step is shown (selected) its element gets the class of "active" and the body element
+    gets the class based on active step id `impress-on-ID` (where ID is the step's id)... It may not be
+    so clear because of all these "ids" in previous sentence, so for example when the first step (the one with
+    the id of `bored`) is active, body element gets a class of `impress-on-bored`.
+    
+    This class is used by this hint below. Check CSS file to see how it's shown with delayed CSS animation when
+    the first step of presentation is visible for a couple of seconds.
+    
+    ...
+    
+    And when it comes to this piece of JavaScript below ... kids, don't do this at home ;)
+    It's just a quick and dirty workaround to get different hint text for touch devices.
+    In a real world it should be at least placed in separate JS file ... and the touch content should be
+    probably just hidden somewhere in HTML - not hard-coded in the script.
+    
+    Just sayin' ;)
+    
+-->
+<div class="hint">
+    <p>Use a spacebar or arrow keys to navigate</p>
+</div>
+<script>
+if ("ontouchstart" in document.documentElement) { 
+    document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+}
+</script>
+
+<!--
+    
+    Last, but not least.
+    
+    To make all described above really work, you need to include impress.js in the page.
+    I strongly encourage to minify it first.
+    
+    In here I just include full source of the script to make it more readable.
+    
+    You also need to call a `impress().init()` function to initialize impress.js presentation.
+    And you should do it in the end of your document. Not only because it's a good practice, but also
+    because it should be done when the whole document is ready.
+    Of course you can wrap it in any kind of "DOM ready" event, but I was too lazy to do so ;)
+    
+-->
+<script src="js/impress.js"></script>
+<script>
+impress().init();
+</script>
+
+<!--
+    
+    The `impress()` function also gives you access to the API that controls the presentation.
+    
+    Just store the result of the call:
+    
+        var api = impress();
+    
+    and you will get three functions you can call:
+    
+        `api.init()` - initializes the presentation,
+        `api.next()` - moves to next step of the presentation,
+        `api.prev()` - moves to previous step of the presentation,
+        `api.goto( idx | id | element, [duration] )` - moves the presentation to the step given by its index number
+                id or the DOM element; second parameter can be used to define duration of the transition in ms,
+                but it's optional - if not provided default transition duration for the presentation will be used.
+    
+    You can also simply call `impress()` again to get the API, so `impress().next()` is also allowed.
+    Don't worry, it wont initialize the presentation again.
+    
+    For some example uses of this API check the last part of the source of impress.js where the API
+    is used in event handlers.
+    
+-->
+
+</body>
+</html>
+
+<!--
+    
+    Now you know more or less everything you need to build your first impress.js presentation, but before
+    you start...
+    
+    Oh, you've already cloned the code from GitHub?
+    
+    You have it open in text editor?
+    
+    Stop right there!
+    
+    That's not how you create awesome presentations. This is only a code. Implementation of the idea that
+    first needs to grow in your mind.
+    
+    So if you want to build great presentation take a pencil and piece of paper. And turn off the computer.
+    
+    Sketch, draw and write. Brainstorm your ideas on a paper. Try to build a mind-map of what you'd like
+    to present. It will get you closer and closer to the layout you'll build later with impress.js.
+    
+    Get back to the code only when you have your presentation ready on a paper. It doesn't make sense to do
+    it earlier, because you'll only waste your time fighting with positioning of useless points.
+    
+    If you think I'm crazy, please put your hands on a book called "Presentation Zen". It's all about 
+    creating awesome and engaging presentations.
+    
+    Think about it. 'Cause impress.js may not help you, if you have nothing interesting to say.
+    
+-->
+
+<!--
+    
+    Are you still reading this?
+    
+    For real?
+    
+    I'm impressed! Feel free to let me know that you got that far (I'm @bartaz on Twitter), 'cause I'd like
+    to congratulate you personally :)
+    
+    But you don't have to do it now. Take my advice and take some time off. Make yourself a cup of coffee, tea,
+    or anything you like to drink. And raise a glass for me ;)
+    
+    Cheers!
+    
+-->
+
