@@ -86,12 +86,12 @@ body {
     min-height: 740px;
 
     background: rgb(215, 215, 215);
-    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(190, 190, 190)));
-    background: -webkit-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
-    background:    -moz-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
-    background:     -ms-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
-    background:      -o-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
-    background:         radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(220, 251, 255)));
+    background: -webkit-radial-gradient(rgb(240, 240, 240), rgb(220, 251, 255));
+    background:    -moz-radial-gradient(rgb(240, 240, 240), rgb(220, 251, 255));
+    background:     -ms-radial-gradient(rgb(240, 240, 240), rgb(220, 251, 255));
+    background:      -o-radial-gradient(rgb(240, 240, 240), rgb(220, 251, 255));
+    background:         radial-gradient(rgb(240, 240, 240), rgb(220, 251, 255));
 }
 
 /*
@@ -320,21 +320,17 @@ a:focus {
     */
     display: none;
 
-    /*
-        ... and give it some fixed position and nice styles.
-    */
     position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 200px;
+    left: 200px;
+    right: 200px;
+    bottom: 100px;
+    border-radius: 10px;
 
-    background: rgba(0,0,0,0.5);
-    color: #EEE;
+    background: rgba(0,82,89,0.5);
+    color: #A5F2FF;
     text-align: center;
-
-    font-size: 50px;
+    font-size: 30px;
     padding: 20px;
-
     z-index: 100;
 
     /*
@@ -376,7 +372,7 @@ a:focus {
 /*
     ... and we will show it when the first step (with id 'bored') is active.
 */
-.impress-on-bored .hint {
+.impress-on-title .hint {
     /*
         We remove the transparency and position the hint in its default fixed
         position.
@@ -390,18 +386,18 @@ a:focus {
     transform:         translateY(0px);
 
     /*
-        Now for fade in transition we have the oposite situation from the one
+        Now for fade in transition we have the opposite situation from the one
         above.
 
         First after 4.5s delay we animate the transform property to move the hint
         into its correct position and after that we fade it in with opacity
         transition.
     */
-    -webkit-transition: opacity 1s 5s, -webkit-transform 0.5s 4.5s;
-    -moz-transition:    opacity 1s 5s,    -moz-transform 0.5s 4.5s;
-    -ms-transition:     opacity 1s 5s,     -ms-transform 0.5s 4.5s;
-    -o-transition:      opacity 1s 5s,      -o-transform 0.5s 4.5s;
-    transition:         opacity 1s 5s,         transform 0.5s 4.5s;
+    -webkit-transition: opacity 1s 4s, -webkit-transform 0.5s 3.5s;
+    -moz-transition:    opacity 1s 4s,    -moz-transform 0.5s 3.5s;
+    -ms-transition:     opacity 1s 4s,     -ms-transform 0.5s 3.5s;
+    -o-transition:      opacity 1s 4s,      -o-transform 0.5s 3.5s;
+    transition:         opacity 1s 4s,         transform 0.5s 3.5s;
 }
 
 /*
